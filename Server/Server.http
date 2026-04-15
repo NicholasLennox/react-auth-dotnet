@@ -1,0 +1,30 @@
+@host = http://localhost:5233
+@token = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxIiwiZW1haWwiOiJuaWNrQHRlc3QuY29tIiwianRpIjoiNjEzNDFkN2EtZWEzNS00YWQ3LWFjMTQtYjFhOGVmNmI3NjFhIiwiZXhwIjoxNzc2MjQ1Mzc3LCJpc3MiOiJmdWxsc3RhY2stbG9naW4iLCJhdWQiOiJmdWxsc3RhY2stbG9naW4ifQ.WEpsNYG6rXRUz3GS4FoXIk8P-AkCNdPVPGRrFWWIL5U
+
+### Register
+POST {{host}}/api/register
+Content-Type: application/json
+
+{
+    "email": "nick@test.com",
+    "password": "Password123!"
+}
+
+###
+
+### Login
+POST {{host}}/api/login
+Content-Type: application/json
+
+{
+    "email": "nick@test.com",
+    "password": "Password123!"
+}
+
+###
+
+### Me (protected) - paste token above after registering
+GET {{host}}/api/me
+Authorization: Bearer {{token}}
+
+###
