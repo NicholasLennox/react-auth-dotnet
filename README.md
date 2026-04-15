@@ -12,6 +12,39 @@ A React + Vite client with three pages:
 
 The flow: register or log in → receive a JWT from the API → store it → use it to guard routes.
 
+## Running the project
+
+You need Docker, .NET 10 SDK, and Node installed.
+
+### 1. Start the database
+
+```bash
+docker run -e ACCEPT_EULA=Y -e SA_PASSWORD=YourStrong!Passw0rd -p 1433:1433 -d mcr.microsoft.com/mssql/server
+```
+
+### 2. Start the API
+
+```bash
+cd Server
+dotnet ef database update
+dotnet run
+```
+
+API runs on `http://localhost:5233`.
+
+### 3. Start the client
+
+```bash
+cd Client
+npm install
+npm run dev
+```
+
+Client runs on `http://localhost:5173`.
+
+> **Note:** the API has a CORS policy that allows requests from `http://localhost:5173` only.
+> If your Vite dev server starts on a different port, update the `WithOrigins` call in `Program.cs`.
+
 ## Forms
 
 ### The problem with one `useState` per field
